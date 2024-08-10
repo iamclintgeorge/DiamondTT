@@ -4,7 +4,6 @@ import MostVisitedPlaces from '../Sections/MostVisitedPlaces.jsx'
 import Currentoffer from '../Sections/Currentoffer.jsx'
 import Testimonials from '../Sections/Testimonials.jsx'
 import Getintouch from '../Sections/Getintouch.jsx'
-import Loginpage from './Loginpage.jsx'
 import './App.css'
 
 function App() {
@@ -12,7 +11,6 @@ function App() {
   return (
     <>
     <Homehero />
-    <Loginpage />
     <MostVisitedPlaces />
     <Currentoffer />
     <Testimonials />
