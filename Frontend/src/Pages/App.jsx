@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import Homehero from '../Sections/Homehero.jsx'
 import MostVisitedPlaces from '../Sections/MostVisitedPlaces.jsx'
 import Currentoffer from '../Sections/Currentoffer.jsx'
