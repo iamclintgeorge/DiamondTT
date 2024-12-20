@@ -1,13 +1,18 @@
 import React, {useState} from 'react'
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 const Loginpage = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = () => {
-    // Authentication Logic Comes here!!
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.post("/login", username, password)
+      .then(res=>{
+        Navigate("/");
+      })
   }
 
   return (
