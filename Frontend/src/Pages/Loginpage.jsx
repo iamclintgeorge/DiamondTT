@@ -1,8 +1,15 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Link } from "react-router-dom";
 
 
 const Loginpage = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = () => {
+    // Authentication Logic Comes here!!
+  }
+
   return (
     <>
     <div className="flex flex-row justify-center items-center h-screen bg-green-950">
@@ -15,14 +22,16 @@ const Loginpage = () => {
           type="text"
           name="username"
           placeholder="Username"
+          onChange={(e)=>setUsername(e.target.value)}
         />
         <input
           className="bg-gray-200 pl-3 py-2 mb-5"
           type="password"
           name="password"
           placeholder="Password"
+          onChange={(e)=>setPassword(e.target.value)}
         />
-<button className="bg-green-950 text-white px-14 py-2 rounded-sm ml-12 mt-3" name="login">Login</button>
+<button className="bg-green-950 text-white px-14 py-2 rounded-sm ml-12 mt-3" name="login" onSubmit={handleSubmit}>Login</button>
 <div className='text-sm text-gray-700 text-center mr-4 mt-5'><Link to="/signup">Don't Have an account? <span className=' text-green-950 font-medium'>Sign Up</span></Link></div>
 </div>
 </div>
