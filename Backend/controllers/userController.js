@@ -61,7 +61,10 @@ export const loginController = async (req, res) => {
 
     res
       .status(200)
-      .json({ message: "User successfully logged in", user, token });
+      .json({ message: "User successfully logged in", user, token })
+      .cookie("uid", token, {
+        httpOnly: true,
+      });
   } catch (err) {
     console.error(err);
     res
