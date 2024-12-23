@@ -22,7 +22,13 @@ const Loginpage = () => {
       console.log("Login Response:", response.data);
       
       // Store the JWT token in localStorage
-      localStorage.setItem("token", response.data.token);
+      // localStorage.setItem("token", response.data.token);
+
+      // Store the JWT token in Cookie
+      const token = response.data.token;
+      res.cookie("uid", token, {
+        httpOnly: true,
+        })
 
       navigate("/"); // Redirect to the homepage or dashboard
     } catch (error) {
