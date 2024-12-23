@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/api";
+import Cookies from 'js-cookie';  
 // import axios from "axios";
 
 const Loginpage = () => {
@@ -21,14 +22,20 @@ const Loginpage = () => {
 
       console.log("Login Response:", response.data);
       
-      // Store the JWT token in localStorage
-      // localStorage.setItem("token", response.data.token);
+      const token = response.data.token;
 
-      // // Store the JWT token in Cookie
-      // const token = response.data.token;
-      // res.cookie("uid", token, {
-      //   httpOnly: true,
-      //   })
+      // // Store the JWT token in a client-side cookie using js-cookie
+      Cookies.set('uid', token, {
+        expires: 1, // Optional: cookie will expire in 1 day (adjust as needed)
+        secure: process.env.NODE_ENV === 'production', // Ensure secure cookies in production
+        sameSite: 'Strict', // Helps with CSRF protection
+      });
+
+            // // Store the JWT token in Cookie
+            // const token = response.data.token;
+            // res.cookie("uid", token, {
+            //   httpOnly: true,
+            //   })
 
       navigate("/"); // Redirect to the homepage or dashboard
     } catch (error) {

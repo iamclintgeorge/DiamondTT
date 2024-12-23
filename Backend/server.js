@@ -10,7 +10,12 @@ const app = express();
 const port = process.env.SERVER_PORT;
 
 // Middlewares
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Frontend URL
+    credentials: true, // Allow cookies to be sent with the request
+  })
+);
 app.use(express.json());
 
 // Use routes
