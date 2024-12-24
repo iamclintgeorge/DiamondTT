@@ -1,6 +1,7 @@
 // server.js
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js"; // Import routes
 
@@ -14,9 +15,11 @@ app.use(
   cors({
     origin: "http://localhost:5173", // Frontend URL
     credentials: true, // Allow cookies to be sent with the request
+    methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 app.use(express.json());
+app.use(cookieParser());
 
 // Use routes
 app.use("/", userRoutes); // Prefix routes with /api

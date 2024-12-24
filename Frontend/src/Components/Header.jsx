@@ -13,7 +13,7 @@ const Header = () => {
     <div className='w-full ml-52 content-center mt-5'>
     <ul className='list-none flex justify-around text-white'>
         <li>Home</li>
-        <li>Contact Us</li>
+        <li><Link to="/hello">Hello</Link></li>
         <li>Packages</li>
         <li>Design Itinerary</li>
         <Link to="/signup"><li>Sign Up</li></Link>

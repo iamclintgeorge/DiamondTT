@@ -1,4 +1,3 @@
-// Frontend (React)
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/api";
@@ -13,31 +12,21 @@ const Loginpage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // const response = await axios.post("http://localhost:6363/login", {
-      //   userName: username,
-      //   password: password,
-      // });
+    //   const response = await axios.post("http://localhost:6363/login", {
+    //     userName: username,
+    //     password: password,
+    //   },
+    //   {
+    //     withCredentials: true,
+    //   }
+    // );
 
       const response = await login(username, password);
-
       console.log("Login Response:", response.data);
-      
+
       const token = response.data.token;
 
-      // // Store the JWT token in a client-side cookie using js-cookie
-      Cookies.set('uid', token, {
-        expires: 1, // Optional: cookie will expire in 1 day (adjust as needed)
-        secure: process.env.NODE_ENV === 'production', // Ensure secure cookies in production
-        sameSite: 'Strict', // Helps with CSRF protection
-      });
-
-            // // Store the JWT token in Cookie
-            // const token = response.data.token;
-            // res.cookie("uid", token, {
-            //   httpOnly: true,
-            //   })
-
-      navigate("/"); // Redirect to the homepage or dashboard
+      navigate("/hello");
     } catch (error) {
       console.error("Error during login:", error.response?.data || error.message);
       alert(error.response?.data?.message || "Login failed. Please try again.");

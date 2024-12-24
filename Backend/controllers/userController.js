@@ -25,6 +25,13 @@ export const signupController = async (req, res) => {
 
     const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: "1h" });
 
+    res.cookie("uid", token, {
+      httpOnly: true, // Makes the cookie inaccessible to JavaScript on the client-side (for security)
+      secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
+      maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
+      sameSite: "Strict", // Strict CSRF protection
+    });
+
     res.status(201).json({ message: "User created successfully", user, token });
   } catch (err) {
     console.error(err);
@@ -58,6 +65,13 @@ export const loginController = async (req, res) => {
 
     // Generate JWT token after successful login
     const token = jwt.sign({ id: user.id }, jwtSecret, { expiresIn: "1h" });
+
+    res.cookie("uid", token, {
+      httpOnly: true, // Makes the cookie inaccessible to JavaScript on the client-side (for security)
+      secure: process.env.NODE_ENV === "production", // Only send cookie over HTTPS in production
+      maxAge: 24 * 60 * 60 * 1000, // 1 day expiration
+      sameSite: "Strict", // Strict CSRF protection
+    });
 
     res
       .status(200)
