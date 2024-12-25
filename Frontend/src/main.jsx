@@ -7,6 +7,7 @@ import Signup from './Pages/Signup.jsx'
 import Login from './Pages/Login.jsx'
 import Hello from './Pages/Hello.jsx'
 import ErrorPage from './Pages/errorPage.jsx'
+import Rome from './Pages/rome.jsx'
 import PrivateRoute from './Components/privateRoute.jsx'
 
 // const ProtectedRoutes = () => {
@@ -34,14 +35,10 @@ const Router = createBrowserRouter([
     path: "/hello",
     element: <Hello />,
   },
-  // {
-  //   path: "/hello",
-  //   element: (
-  //     <PrivateRoute>
-  //       <Hello />
-  //     </PrivateRoute>
-  //   ),
-  // },
+  {
+    path: "/rome",
+    element: <PrivateRoute Component={Rome}/>,
+  },
   {
     path: "*",
     element: <ErrorPage />,

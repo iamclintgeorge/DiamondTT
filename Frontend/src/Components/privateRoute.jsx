@@ -1,9 +1,25 @@
-import React from "react";
-import { Navigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const PrivateRoute = ({ children }) => {
-  const token = document.cookie.includes("uid=");
-  return token ? children : <Navigate to="/login" />;
+const PrivateRoute = ({ Component }) => {
+  const [isLoading, setIsLoading] = useState(true); // Track loading state
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const token = document.cookie.includes("uid=");
+    console.log("privateRoute:", token);
+    if (!token) {
+      navigate("/login");
+    } else {
+      setIsLoading(false); // Set loading to false after auth check
+    }
+  }, [navigate]);
+
+  if (isLoading) {
+    return <div>Loading...</div>; // Show loading indicator or nothing
+  }
+
+  return <Component />;
 };
 
 export default PrivateRoute;

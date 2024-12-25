@@ -1,3 +1,9 @@
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
+dotenv.config();
+
+const jwtSecret = process.env.JWT_SECRET;
+
 export const authMiddleware = (req, res, next) => {
   console.log("Cookies:", req.cookies);
   const token = req.cookies.uid;
