@@ -10,14 +10,6 @@ import ErrorPage from './Pages/errorPage.jsx'
 import Rome from './Pages/rome.jsx'
 import PrivateRoute from './Components/privateRoute.jsx'
 
-// const ProtectedRoutes = () => {
-//   return (
-//     <Routes>
-//       <Route path="hello" element={<Hello />} />
-//     </Routes>
-//   );
-// };
-
 const Router = createBrowserRouter([
   {
     path: "/",
