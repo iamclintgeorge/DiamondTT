@@ -10,7 +10,7 @@ const Hello = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:6363/hello", {
+      .get("http://localhost:6363/api/v1/hello", {
         withCredentials: true,  // Make sure cookies are included with the request
       })
       .then((response) => {

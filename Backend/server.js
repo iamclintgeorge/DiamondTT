@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // Use routes
-app.use("/", userRoutes); // Prefix routes with /api
+app.use("/api/v1", userRoutes); // Prefix routes with /api
 
 app.listen(port, () => {
   console.log(`Server started on port ${port}`);
